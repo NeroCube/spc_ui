@@ -115,7 +115,9 @@ def get_figure(dff, start_date, end_date, table, selectedpoints, selectedpoints_
             "y0": np.min(df[y_col]),
             "y1": np.max(df[y_col]),
         }
-    df = df[df['Table']==table]
+    df = df[(df['Table']==table)
+            &(df['Inserted']>=datetime.strptime(start_date, '%Y-%m-%d'))
+            &(df['Inserted']<datetime.strptime(end_date, '%Y-%m-%d'))]
     fig = px.scatter(df, 
                      x=df[x_col], 
                      y=df[y_col], 
