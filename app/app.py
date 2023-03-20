@@ -129,12 +129,14 @@ def get_figure(dff, start_date, end_date, table, selectedpoints, selectedpoints_
                         datetime.strptime(end_date, '%Y-%m-%d')+timedelta(hours=1) 
                         ])
 
-    fig.update_traces(marker={'size': 20})
+    fig.update_traces(
+        marker={'size': 12}, 
+        unselected={"textfont": {"color": "rgba(0, 0, 0, 0)"},"marker": {"opacity": 0.3}},
+        textfont={"color": "rgba(0, 0, 0, 0)"})
 
     fig.update_layout(
         margin={"l": 20, "r": 0, "b": 15, "t": 5},
         dragmode="select",
-        hovermode=False,
         newselection_mode="gradual",
     )
 
